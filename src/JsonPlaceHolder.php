@@ -9,7 +9,8 @@ use GuzzleHttp\Exception\ClientException;
 /**
  * @author Wings
  */
-class JsonPlaceHolder {
+class JsonPlaceHolder
+{
 
     /**
      * @const string jsonplaceholder address
@@ -21,18 +22,22 @@ class JsonPlaceHolder {
      */
     private $client;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->client = new Client(['base_uri' => self::BASE_URI]);
     }
 
     /**
      * @param string $text a sanitized text
-     * 
+     *
      * @return void
      */
-    public function store(String $text):array{
+    public function store(String $text):array
+    {
         try {
-            $response = $this->client->post('/posts', [
+            $response = $this->client->post(
+                '/posts',
+                [
                 'body' => json_encode(['title' => 'sanitized string', 'body' => $text])
                 ]
             );
@@ -41,7 +46,5 @@ class JsonPlaceHolder {
             echo Psr7\str($e->getRequest());
             echo Psr7\str($e->getResponse());
         }
-
-    }    
-
+    }
 }

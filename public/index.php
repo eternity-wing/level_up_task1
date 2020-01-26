@@ -6,8 +6,8 @@ require_once dirname(__DIR__) . '/vendor/autoload.php';
 use App\JsonPlaceHolder;
 use App\HtmlPurifier;
 
-function main():void{
-    
+function main():void
+{
     $rawHtml = readline("Enter text: ");
     readline_add_history($rawHtml);
 
@@ -23,4 +23,3 @@ function main():void{
 }
 
 main();
-

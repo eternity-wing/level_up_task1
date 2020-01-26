@@ -8,7 +8,8 @@ use HtmlSanitizer\Sanitizer;
 /**
  * @author Wings
  */
-class HtmlPurifier {
+class HtmlPurifier
+{
 
     /**
      * @const array[] unwanted characters
@@ -20,7 +21,8 @@ class HtmlPurifier {
      */
     private $sanitizer;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->sanitizer = Sanitizer::create(['extensions' => ['basic']]);
     }
 
@@ -28,7 +30,8 @@ class HtmlPurifier {
      * @param string $str
      * @return string
      */
-    public function purify(String $str):String{
+    public function purify(String $str):String
+    {
         return $this->sanitizer->sanitize($this->stripUnwantedCharacters($str));
     }
 
@@ -36,8 +39,8 @@ class HtmlPurifier {
      * @param string $str
      * @return string
      */
-    private function stripUnwantedCharacters(String $str):String{
+    private function stripUnwantedCharacters(String $str):String
+    {
         return str_replace(self::UNWANTED_CHARACTERS, '', $str);
     }
-
 }

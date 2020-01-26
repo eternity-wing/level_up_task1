@@ -1,9 +1,7 @@
 https://phptherightway.com
 https://github.com/jupeter/clean-code-php
-
-
-https://www.php-fig.org/
 https://pear.php.net/manual/en/standards.naming.php
-https://symfony.com/doc/current/contributing/code/standards.html
+https://www.php-fig.org/
 https://kevinsmith.io/modern-php-without-a-framework
 
+https://symfony.com/doc/current/contributing/code/standards.html

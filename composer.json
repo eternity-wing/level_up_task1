@@ -14,5 +14,24 @@
         "psr-4": {
             "App\\": "src/"
         }
+    },
+    "require-dev": {
+        "brainmaestro/composer-git-hooks": "^2.8"
+    },
+    "extra": {
+        "hooks": {
+            "pre-commit": [
+                "echo committing as $(git config user.name)",
+                "php-cs-fixer fix ." 
+            ],
+            "commit-msg": "grep -q '[A-Z]+-[0-9]+.*' $1",
+            "pre-push": [
+                "php-cs-fixer fix --dry-run ."
+            ],
+            "post-merge": "composer install"
+        }
+    },
+    "scripts": {
+        "cghooks": "vendor/bin/cghooks"
     }
 }
