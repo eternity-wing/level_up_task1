@@ -24,11 +24,8 @@
         "hooks": {
             "pre-commit": [
                 "echo committing as $(git config user.name)",
-                "php-cs-fixer fix ." 
-            ],
-            "commit-msg": "grep -q '[A-Z]+-[0-9]+.*' $1",
-            "pre-push": [
-                "php-cs-fixer fix --dry-run ."
+                "php-cs-fixer fix .",
+                "./vendor/bin/phpunit"
             ],
             "post-merge": "composer install"
         }
