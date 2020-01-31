@@ -1,45 +1,76 @@
 <?php
-declare(strict_types=1);
+/**
+ * HtmlPurifier
+ *
+ * PHP version 7.2
+ *
+ * @category HtmlPurifier
+ * @package  Task1
+ * @author   Wings <eternity.mr8@gmail.com>
+ * @license  http://www.gnu.org/copyleft/gpl.html GNU General Public License
+ * @link     https://github.com/eternity-wing/level_up_task1
+ */
+
+declare(strict_types = 1);
 
 namespace App;
 
 use HtmlSanitizer\Sanitizer;
 
 /**
- * @author Wings
+ * HtmlPurifier Class
+ *
+ * @category Class
+ * @package  Task1
+ * @author   Wings <eternity.mr8@gmail.com>
+ * @license  http://www.gnu.org/copyleft/gpl.html GNU General Public License
+ * @link     https://github.com/eternity-wing/level_up_task1
  */
 class HtmlPurifier
 {
 
     /**
+     * Unwanted characters
+     *
      * @const array[] unwanted characters
      */
     const UNWANTED_CHARACTERS = ['!', '@', '#', '$', '%', '^', '&', '*'];
 
     /**
+     * Property of external package for sanitizing html
+     *
      * @var \HtmlSanitizer\Sanitizer
      */
     private $sanitizer;
 
+    /**
+     * Initializing sanitizer property
+     */
     public function __construct()
     {
         $this->sanitizer = Sanitizer::create(['extensions' => ['basic']]);
     }
 
     /**
-     * @param string $str
+     * Removing Unwanted character then sanitize them.
+     *
+     * @param string $str raw string which contains html tags or special characters.
+     *
      * @return string
      */
-    public function purify(String $str):String
+    public function purify(String $str): String
     {
         return $this->sanitizer->sanitize($this->stripUnwantedCharacters($str));
     }
 
     /**
-     * @param string $str
+     * Stripping Unwanted character.
+     *
+     * @param string $str raw string which contains html tags or special characters.
+     *
      * @return string
      */
-    private function stripUnwantedCharacters(String $str):String
+    public function stripUnwantedCharacters(String $str): String
     {
         return str_replace(self::UNWANTED_CHARACTERS, '', $str);
     }
